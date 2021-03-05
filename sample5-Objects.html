@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Creating Objects In Literl way 
+        var User = {
+            fname: "Murali",
+            lname: "Krishna",
+            email: "murali@gmail"
+        }
+
+        // Creating an Object with Constructor Function
+        function MyUser(fname, lname, email) {
+            this.fname = fname;
+            this.lname = lname;
+            this.email = email;
+        }
+
+        // Creating An Object With Class
+        class Employee {
+            constructor(fname, lname, email) {
+                this.fname = fname;
+                this.lname = lname;
+                this.email = email;
+            }
+        }
+        var user1 = new MyUser("Chandra", "Sekhar", "chandra@gmail.com")
+        console.log(user1)
+
+
+        var emp1 = new Employee("Ram", "Kumar", "ram@gamil.com")
+
+        console.log(emp1)
+    </script>
+</body>
+
+</html>
