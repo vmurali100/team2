@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="hideImage()">Hide Image</button>
+    <button>Double Click On Me</button>
+    <img onmouseout="changeImageBack()" onmouseover="changeImageSize()"
+        src="https://i.ytimg.com/vi/vhpB2Pj2IhI/maxresdefault.jpg" alt="" width="100px">
+    <input type="text">
+    <script>
+        function hideImage() {
+            document.querySelector("img").style.display = "none"
+        }
+        function changeImageSize() {
+            document.querySelector("img").style.width = "120px"
+        }
+
+        function changeImageBack() {
+            document.querySelector("img").style.width = "100px"
+        }
+    </script>
+</body>
+
+</html>
