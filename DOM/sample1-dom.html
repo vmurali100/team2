@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="fname">First Name :</label>
+        <input type="text" name="fname" id="fname" class="myName"> <br>
+        <label for="lname">Last Name :</label>
+        <input type="text" name="" id="lname"> <br>
+        <label for="city">City :</label>
+        <select name="" id="city">
+            <option value="Bangalore">Bangalore</option>
+            <option value="Chittoor">Chittoor</option>
+            <option value="Chennai">Chennai</option>
+        </select> <br>
+
+        <label for="gender">Gender :</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female <br>
+        <label for="subjects">Subjects :</label>
+        <input type="checkbox" name="subject" value="HTML"> HTML
+        <input type="checkbox" name="subject" value="CSS"> CSS
+        <input type="checkbox" name="subject" value="JS"> JS
+        <input type="checkbox" name="subject" value="ReactJS"> ReactJS <br>
+        <button onclick="getUser()" type="button">Get Details</button>
+    </form>
+    <script>
+        function getUser() {
+            // var fname = document.getElementById("fname").value
+            // var lname = document.getElementById("lname").value
+
+            var person = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                city: document.getElementById("city").value,
+                subjects: []
+            }
+
+            var rbuttons = document.getElementsByName("gender")
+            rbuttons.forEach((ele) => {
+                if (ele.checked) {
+                    person.gender = ele.value
+                }
+            })
+
+            var cBoxes = document.getElementsByName("subject")
+            cBoxes.forEach((ele) => {
+                if (ele.checked) {
+                    person.subjects.push(ele.value)
+                }
+            })
+            console.log(person)
+
+
+            // var fname = document.querySelector("#fname").value
+            // var fname = document.getElementsByTagName("input")[0].value
+            // var fname = document.getElementsByName("fname")[0].value
+            // var fname = document.getElementsByClassName("myName")[0].value
+            // var fname = document.getElementById("fname").value
+            // var fname = document.querySelectorAll("input")[0].value
+            // console.log(fname)
+        }
+    </script>
+</body>
+
+</html>
