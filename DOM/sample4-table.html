@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Tel</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var users = [
+            {
+                "fname": "Melgema",
+                "lname": "Trrenkler",
+                "tel": "(584)337-2904",
+                "address": "8553 Eget Ln",
+                "city": "Canton",
+                "state": "NC",
+                "zip": 59196
+            },
+            {
+                "fname": "Jamie",
+                "lname": "Bullock",
+                "tel": "(104)696-1940",
+                "address": "6864 Malesuada Rd",
+                "city": "Blaine",
+                "state": "GA",
+                "zip": 56505
+            },
+            {
+                "fname": "Minhajuddin",
+                "lname": "Velasco",
+                "tel": "(135)087-1852",
+                "address": "4688 Tellus St",
+                "city": "Long Beach",
+                "state": "SD",
+                "zip": 16065
+            },
+            {
+                "fname": "Erma",
+                "lname": "Gershowitz",
+                "tel": "(223)482-7964",
+                "address": "1530 Convallis Ct",
+                "city": "St. Louis",
+                "state": "KS",
+                "zip": 31191
+            },
+            {
+                "fname": "Isabel",
+                "lname": "Walters",
+                "tel": "(966)719-1071",
+                "address": "6777 Mattis Rd",
+                "city": "Saint Louis",
+                "state": "FL",
+                "zip": 43564
+            }
+        ]
+
+        users.forEach((user) => {
+            var myTr = document.createElement("tr");
+            for (a in user) {
+                var myTd = document.createElement("td");
+                myTd.innerHTML = user[a]
+                myTr.appendChild(myTd)
+
+            }
+            document.querySelector("tbody").appendChild(myTr)
+        })
+    </script>
+</body>
+
+</html>
