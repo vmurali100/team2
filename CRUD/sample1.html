@@ -17,7 +17,8 @@
         <label for="email">Email :</label>
         <input type="text" name="" id="email"> <br>
 
-        <button type="button" onclick="addUser()">Add User</button>
+        <button type="button" onclick="addUser()" id="addBtn">Add User</button>
+        <button type="button" style="display: none;" id="updateBtn" onclick="updateUser()">Update</button>
     </form>
     <hr>
     <table border="1">
@@ -35,7 +36,8 @@
         </tbody>
     </table>
     <script>
-        var users = []
+        var users = [];
+        var ind
         function addUser() {
             var user = {
                 fname: document.getElementById("fname").value,
@@ -82,13 +84,33 @@
             document.getElementById("email").value = ""
         }
 
-        function editUser() {
+        function editUser(i) {
+            console.log(users[i])
+            ind = i
+            document.getElementById("fname").value = users[i].fname
+            document.getElementById("lname").value = users[i].lname
+            document.getElementById("email").value = users[i].email
 
+            document.getElementById("updateBtn").style.display = "block"
+            document.getElementById("addBtn").style.display = "none"
         }
 
         function deleteUser(i) {
             users.splice(i, 1);
             displayUsers()
+        }
+
+        function updateUser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("email").value
+            }
+            users[ind] = user;
+            displayUsers();
+            clearForm();
+            document.getElementById("updateBtn").style.display = "none"
+            document.getElementById("addBtn").style.display = "block"
         }
     </script>
 </body>
