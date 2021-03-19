@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="getDataFromServer()">Get Data From Server</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Tel</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        let users = []
+        function getDataFromServer() {
+            // Conditions To Get Data From Server 
+            // 1. 4th Step
+            // 2. Status should be 200
+
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    console.log(JSON.parse(getData.response))
+                    users = JSON.parse(getData.response);
+                    displayUsers()
+                }
+            }
+
+            getData.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+            getData.send()
+        }
+
+        function displayUsers() {
+            users.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+    </script>
+</body>
+
+</html>
