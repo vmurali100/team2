@@ -9,17 +9,28 @@
 </head>
 
 <body>
-    <button onclick="getDataFromServer()">Get Data From Server</button>
+    <form>
+        <label for="fname">First Name :</label>
+        <input type="text" name="" id="fname"> <br>
+        <label for="lname">Last Name :</label>
+        <input type="text" name="" id="lname"> <br>
+        <label for="email">Email :</label>
+        <input type="text" name="" id="email"> <br>
+
+        <button type="button" onclick="addUser()" id="addBtn">Add User</button>
+        <button type="button" style="display: none;" id="updateBtn" onclick="updateUser()">Update</button>
+    </form>
+
+    <!-- <button onclick="getDataFromServer()">Get Data From Server</button> -->
     <table border="1">
         <thead>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Tel</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
+                <th>Email</th>
+                <th>ID</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +38,71 @@
         </tbody>
     </table>
     <script>
+        //add User to Server
+
+        function addUser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("email").value
+            }
+
+            var addUser = new XMLHttpRequest();
+            addUser.onreadystatechange = function () {
+                if (addUser.readyState == 4 && addUser.status == 201) {
+                    getDataFromServer()
+                }
+            }
+
+            addUser.open("POST", "http://localhost:3000/users");
+            addUser.setRequestHeader('Content-type', 'application/json')
+            addUser.send(JSON.stringify(user))
+        }
+
+        //Remove User in server
+
+        function deleteUser(i) {
+            var addUser = new XMLHttpRequest();
+            addUser.onreadystatechange = function () {
+                if (addUser.readyState == 4 && addUser.status == 200) {
+                    getDataFromServer()
+                }
+            }
+
+            addUser.open("DELETE", "http://localhost:3000/users/" + users[i].id);
+            addUser.send()
+        }
+
+        //update User in Server
+
+        function editUser(i) {
+            ind = i
+            document.getElementById("fname").value = users[i].fname
+            document.getElementById("lname").value = users[i].lname
+            document.getElementById("email").value = users[i].email
+
+            document.getElementById("updateBtn").style.display = "block"
+            document.getElementById("addBtn").style.display = "none"
+        }
+
+
+        function updateUser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("email").value
+            }
+            var addUser = new XMLHttpRequest();
+            addUser.onreadystatechange = function () {
+                if (addUser.readyState == 4 && addUser.status == 201) {
+                    getDataFromServer()
+                }
+            }
+
+            addUser.open("PUT", "http://localhost:3000/users/" + users[ind].id);
+            addUser.setRequestHeader('Content-type', 'application/json')
+            addUser.send(JSON.stringify(user))
+        }
         let users = []
         function getDataFromServer() {
             // Conditions To Get Data From Server 
@@ -42,12 +118,14 @@
                 }
             }
 
-            getData.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+            getData.open("GET", "http://localhost:3000/users")
             getData.send()
         }
 
         function displayUsers() {
-            users.forEach((user) => {
+            document.querySelector("tbody").innerHTML = ""
+
+            users.forEach((user, i) => {
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td");
@@ -55,9 +133,26 @@
                     myTr.appendChild(myTd)
 
                 }
+
+                var editTd = document.createElement("td");
+                var editBtn = document.createElement("button");
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn);
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button");
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+
+                myTr.appendChild(editTd)
+                myTr.appendChild(deleteTd)
                 document.querySelector("tbody").appendChild(myTr)
             })
         }
+
+        getDataFromServer()
     </script>
 </body>
 

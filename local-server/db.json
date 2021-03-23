@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "fname": "Murali",
+      "lname": "Veesambattu",
+      "email": "vmurali100@gmail.com",
+      "id": 2
+    },
+    {
+      "fname": "Murali",
+      "lname": "VV",
+      "email": "murali.veesambattu@gmail.com",
+      "id": 3
+    }
+  ]
+}
