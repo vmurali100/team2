@@ -2,15 +2,27 @@
   "users": [
     {
       "fname": "Murali",
-      "lname": "Veesambattu",
+      "lname": "VMK",
       "email": "vmurali100@gmail.com",
       "id": 2
     },
     {
-      "fname": "Murali",
-      "lname": "VV",
-      "email": "murali.veesambattu@gmail.com",
+      "fname": "Murali -",
+      "lname": "Reddy",
+      "email": "vmurali100@gmail.com",
       "id": 3
+    },
+    {
+      "fname": "Murali -",
+      "lname": "Rav",
+      "email": "vmurali100@gmail.com",
+      "id": 4
+    },
+    {
+      "fname": "Leelavathi",
+      "lname": "KM",
+      "email": "leelavathikm1@gmail.com",
+      "id": 5
     }
   ]
 }
