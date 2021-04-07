@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="sayHello()">Click</button>
+    <h2 class="hel" id="he">Hello from H2</h2>
+
+    <ul>
+        <li>Hari</li>
+        <li>Sai</li>
+        <li>Ram</li>
+        <li>Ravi</li>
+        <li>Sam</li>
+    </ul>
+    <script>
+        function sayHello() {
+            console.log("Hello World")
+        }
+
+        // document.querySelector("h2")
+        // document.getElementsByTagName("h2")[0]
+        // document.getElementsByClassName("hel")[0]
+        // document.querySelectorAll("h2")[0]
+        // document.getElementById("he")
+        //     .onclick = function (event) {
+        //         console.log(this)
+        //         console.log(event.target.innerHTML)
+        //     }
+
+        document.querySelector("ul").onclick = function (e) {
+            console.log(e.target)
+            var clickedElement = e.target
+            clickedElement.parentElement.removeChild(clickedElement)
+        }
+    </script>
+</body>
+
+</html>
