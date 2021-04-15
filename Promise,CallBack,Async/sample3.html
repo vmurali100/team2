@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getUsersFromServer() {
+            return new Promise((resolve, reject) => {
+                var getUsers = new XMLHttpRequest();
+                getUsers.onreadystatechange = function () {
+                    if (getUsers.readyState == 4 && getUsers.status == 200) {
+                        users = JSON.parse(getUsers.response)
+                        resolve(users)
+                    }
+                }
+                getUsers.open("GET", "http://localhost:3000/users");
+                getUsers.send()
+            })
+        }
+
+        function displayAllUsers() {
+            console.log(users)
+        }
+
+        async function handleAllFunctions() {
+            var users = await getUsersFromServer()
+            displayAllUsers()
+        }
+    </script>
+</body>
+
+</html>

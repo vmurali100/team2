@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2></h2>
+    <script>
+        function showCurrentTime() {
+            var todaysDate = new Date();
+            document.querySelector("h2").innerHTML = todaysDate.toLocaleString()
+        }
+
+        setInterval(function () {
+            showCurrentTime()
+        }, 1000)
+        showCurrentTime()
+    </script>
+</body>
+
+</html>
