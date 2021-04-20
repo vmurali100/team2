@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <a href="https://www.google.com/">Go to Google</a> -->
+    <ul>
+        <li data-name="https://www.google.com/">Google</li>
+        <li data-name="https://www.microsoft.com/en-in/">Microsoft</li>
+        <li data-name="https://www.facebook.com/">Facebook</li>
+    </ul>
+    <button>GO to Google</button>
+    <script>
+        document.querySelector("ul").onclick = function (e) {
+            console.log(e.target.innerHTML)
+            window.location.href = "https://www." + e.target.innerHTML + ".com/"
+        }
+    </script>
+</body>
+
+</html>

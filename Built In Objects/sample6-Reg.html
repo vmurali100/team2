@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="first Name">First Name :</label>
+        <input type="text" name="" id="" onkeyup="checkNos()"> <br>
+        <p style="color: red;display:none">Please Enter Only Alphabets</p>
+    </form>
+    <script>
+        function checkNos() {
+            let entervalue = document.querySelector("input").value
+            var pattern = /^[A-Za-z]+$/
+            if (!pattern.test(entervalue)) {
+                document.querySelector("p").style.display = "block"
+            } else {
+                document.querySelector("p").style.display = "none"
+            }
+        }
+        var message = "Welcome to Javascript . And Java . Learing Version 12345"
+
+        var pattern = /[^1-2]/g
+
+        var result = message.match(pattern)
+
+    </script>
+</body>
+
+</html>
